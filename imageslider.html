@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: aqua;
+
+        }
+
+        .slider-container {
+            background-color: rgba(8, 8, 8, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
+        .slider-img {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        img{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <h1 style="color:white" > Image Slider</h1>
+        <img src="download (1).jpeg" id="slider" class="slider-img" alt="Image">
+    <div class="btn-group">
+    <button class = "btn" onclick="prevImage()">Previous</button>
+    <button class="btn" onclick="nextImage()">Next</button>
+    </div>
+</div>
+
+<script>
+    const image = [
+        "download(1).jpeg",
+        "download.jpeg",
+        "images(1).jpeg",
+        "images.jpeg",
+        "images(2).jpeg",
+        "images(3).jpeg",
+    ];
+
+    let currentIndex = 0;
+    const slider = document.getElementById("slider");
+
+    function showImage(index) {
+        slider.src = image[index];
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + image.length) % image.length;
+        showImage(currentIndex);
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % image.length;
+        showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 3000); // Change image every 3 seconds
+</script>
+</body>
+</html>
